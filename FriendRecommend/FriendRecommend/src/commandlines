@@ -1,0 +1,1 @@
+hadoop jar RecommendFriend.jar Friend_Recommender xiaodi_hadoop/mutual.txt /FriendshipRecommender xiaodi_hadoop/userdata.txt

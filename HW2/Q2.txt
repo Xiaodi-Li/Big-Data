@@ -1,0 +1,7 @@
+val line = sc.textFile("/media/data1/dingcheng/workspace/Xiaodi/BigData/mutual.txt").map(line=>line.split("\t"));
+val ln1 = "10"
+val ln2 = "12"
+
+val res1 = line.filter(_(0)==ln1).map(line=>line(1)).flatMap(_.split(","))
+val res2 = line.filter(_(0)==ln2).map(line=>line(1)).flatMap(_.split(","))
+val res4 = res1.intersection(res2).map(line=>(line,"")).collect

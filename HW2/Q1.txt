@@ -1,0 +1,8 @@
+val input = sc.textFile("/media/data1/dingcheng/workspace/Xiaodi/BigData/mutual.txt")
+val filteredInput = input.map(line => line.split("\t")).filter(line=>(line.length>1)).map(line =>{val friendsList = line(1).split(","); val friendsList1 = line(1).split(",");friendsList.map(x=>{friendsList1.map(y=>{if(x!=y) ((x,y),"1") else ((x,line(0)),"-1")})}  )})
+val oneDomainInput = filteredInput.flatMap(x=>x);
+val oneDomainInput1 = oneDomainInput.flatMap(x=>x);
+val filteredNums = oneDomainInput1.filter(line=>(line._1._1=="924"||line._1._1=="924"||line._1._1=="8941"||line._1._1=="8942"||line._1._1=="9019"||line._1._1=="9020"||line._1._1=="9021"||line._1._1=="9022"||line._1._1=="9990"||line._1._1=="9992"||line._1._1=="9993"))
+val recommendFriends = filteredNums.groupByKey.map(line=>(line._1,line._2.toString)).filter(l=>(!l._2.contains("-1")))
+val top10Recommend = recommendFriends.map(line=>(line._1,line._2.split(",").length)).map(l=>(l._1._1,(l._1._2,l._2))).sortBy(-_._2._2).groupByKey
+top10Recommend.map(line=>(line._1,line._2.take(10))).collect
